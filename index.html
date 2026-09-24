@@ -65,17 +65,17 @@ nav{position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border);back
 .section-head p{color:var(--muted2);max-width:480px;margin:0 auto;font-size:16px;}
 
 /* SCREENS */
-.screens-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-@media(max-width:680px){.screens-grid{grid-template-columns:1fr;}}
+.screens-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+@media(max-width:780px){.screens-grid{grid-template-columns:1fr;}}
 .screen-card{background:var(--bg1);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .25s ease,border-color .25s ease;}
 .screen-card:hover{transform:translateY(-6px);border-color:rgba(34,197,94,0.25);}
 .screen-bar{display:flex;align-items:center;gap:6px;padding:12px 14px;border-bottom:1px solid var(--border-soft);}
 .screen-bar .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.12);}
 .screen-bar .urlbar{flex:1;height:18px;background:var(--bg2);border-radius:4px;margin-left:8px;}
-.screen-img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;}
-.screen-caption{padding:14px 16px;}
-.screen-caption h4{font-size:14px;color:var(--white);margin-bottom:4px;}
-.screen-caption p{font-size:13px;color:var(--muted);line-height:1.5;}
+.screen-img{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:top;}
+.screen-caption{padding:18px 20px;}
+.screen-caption h4{font-size:16px;color:var(--white);margin-bottom:6px;}
+.screen-caption p{font-size:14px;color:var(--muted);line-height:1.5;}
 
 /* BENEFITS */
 .benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
@@ -168,12 +168,12 @@ footer{border-top:1px solid var(--border);padding:56px 28px 36px;}
   <div class="hero-stats">
     <div class="hero-stat"><div class="num">100%</div><div class="label">En la nube</div></div>
     <div class="hero-stat"><div class="num">1 día</div><div class="label">Para activar</div></div>
-    <div class="hero-stat"><div class="num">24 hs</div><div class="label">Soporte</div></div>
+    <div class="hero-stat"><div class="num">12-20 hs</div><div class="label">Soporte L a V</div></div>
   </div>
 </section>
 
 <section class="section" id="sistema" style="background:var(--bg1);">
-  <div class="container">
+  <div class="container" style="max-width:1280px;">
     <div class="section-head">
       <span class="section-tag">La plataforma</span>
       <h2>Diseñada para el día a día</h2>
