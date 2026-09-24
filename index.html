@@ -1,1 +1,322 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zentry — Gestión para asociaciones civiles</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --bg:#080C10;
+  --bg1:#0D1117;
+  --bg2:#111820;
+  --border:rgba(255,255,255,0.07);
+  --border-soft:rgba(255,255,255,0.04);
+  --green:#22C55E;
+  --green-dim:rgba(34,197,94,0.12);
+  --green-glow:rgba(34,197,94,0.25);
+  --white:#F0F6FF;
+  --muted:#6B7683;
+  --muted2:#8A9BAA;
+}
+body{background:var(--bg);color:var(--white);font-family:'Inter',sans-serif;font-size:16px;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+h1,h2,h3,h4,.brand-name{font-family:'Space Grotesk',sans-serif;font-weight:600;letter-spacing:-.02em;}
+a{text-decoration:none;color:inherit;}
+img{display:block;max-width:100%;}
+.container{max-width:1080px;margin:0 auto;padding:0 28px;}
 
+/* NAV */
+nav{position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border);background:rgba(8,12,16,0.88);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:64px;padding:0 28px;max-width:1080px;margin:0 auto;}
+.brand{display:flex;align-items:center;gap:10px;}
+.brand-logo{height:44px;width:44px;object-fit:contain;}
+.brand-name{font-size:17px;font-weight:600;color:var(--white);}
+.btn{display:inline-flex;align-items:center;gap:6px;padding:9px 20px;border-radius:8px;font-family:'Inter',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all .18s ease;border:none;}
+.btn-primary{background:var(--green);color:#080C10;}
+.btn-primary:hover{background:#16A34A;transform:translateY(-1px);}
+.btn-ghost{background:transparent;color:var(--muted2);border:1px solid var(--border);}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.15);color:var(--white);}
+
+/* HERO */
+.hero{padding:100px 28px 96px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(34,197,94,0.07) 0%,transparent 70%);top:-200px;left:50%;transform:translateX(-50%);pointer-events:none;}
+.hero-logo{width:140px;height:140px;margin:0 auto 32px;object-fit:contain;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:var(--green-dim);border:1px solid rgba(34,197,94,0.2);color:var(--green);font-size:12px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:28px;}
+.hero-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.3;}}
+.hero h1{font-size:clamp(36px,6vw,64px);font-weight:700;line-height:1.1;max-width:760px;margin:0 auto 20px;color:var(--white);}
+.hero p{font-size:18px;color:var(--muted2);max-width:520px;margin:0 auto 40px;font-weight:300;line-height:1.7;}
+.hero-cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-lg{padding:13px 28px;font-size:15px;border-radius:10px;}
+.hero-stats{display:flex;justify-content:center;border:1px solid rgba(34,197,94,0.18);border-radius:14px;overflow:hidden;max-width:560px;margin:64px auto 0;background:var(--bg1);}
+.hero-stat{flex:1;padding:22px 16px;text-align:center;border-right:1px solid rgba(34,197,94,0.12);}
+.hero-stat:last-child{border-right:none;}
+.hero-stat .num{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:var(--white);margin-bottom:4px;}
+.hero-stat .label{font-size:12px;color:var(--muted);font-weight:400;}
+
+/* SECTION */
+.section{padding:88px 28px;}
+.section-tag{display:inline-block;color:var(--green);font-size:12px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;}
+.section-head{text-align:center;margin-bottom:56px;}
+.section-head h2{font-size:clamp(26px,4vw,40px);color:var(--white);margin-bottom:14px;}
+.section-head p{color:var(--muted2);max-width:480px;margin:0 auto;font-size:16px;}
+
+/* SCREENS */
+.screens-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+@media(max-width:680px){.screens-grid{grid-template-columns:1fr;}}
+.screen-card{background:var(--bg1);border:1px solid var(--border);border-radius:14px;overflow:hidden;transition:transform .25s ease,border-color .25s ease;}
+.screen-card:hover{transform:translateY(-6px);border-color:rgba(34,197,94,0.25);}
+.screen-bar{display:flex;align-items:center;gap:6px;padding:12px 14px;border-bottom:1px solid var(--border-soft);}
+.screen-bar .dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,0.12);}
+.screen-bar .urlbar{flex:1;height:18px;background:var(--bg2);border-radius:4px;margin-left:8px;}
+.screen-img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:top;}
+.screen-caption{padding:14px 16px;}
+.screen-caption h4{font-size:14px;color:var(--white);margin-bottom:4px;}
+.screen-caption p{font-size:13px;color:var(--muted);line-height:1.5;}
+
+/* BENEFITS */
+.benefits-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+@media(max-width:600px){.benefits-grid{grid-template-columns:1fr;}}
+.benefit-card{background:var(--bg1);border:1px solid var(--border);border-radius:14px;padding:28px 24px;transition:border-color .2s,transform .2s;}
+.benefit-card:hover{border-color:rgba(34,197,94,0.2);transform:translateY(-3px);}
+.benefit-icon{width:42px;height:42px;border-radius:10px;background:var(--green-dim);border:1px solid rgba(34,197,94,0.15);display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:18px;}
+.benefit-card h3{font-size:16px;color:var(--white);margin-bottom:8px;}
+.benefit-card p{font-size:14px;color:var(--muted2);line-height:1.6;}
+
+/* STEPS */
+.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;}
+@media(max-width:640px){.steps-grid{grid-template-columns:1fr;}}
+.step-card{padding:32px 28px;border-right:1px solid var(--border);background:var(--bg1);}
+.step-card:last-child{border-right:none;}
+@media(max-width:640px){.step-card{border-right:none;border-bottom:1px solid var(--border);}.step-card:last-child{border-bottom:none;}}
+.step-num{font-family:'Space Grotesk',sans-serif;font-size:11px;font-weight:600;letter-spacing:.08em;color:var(--green);text-transform:uppercase;margin-bottom:14px;}
+.step-card h3{font-size:16px;color:var(--white);margin-bottom:8px;}
+.step-card p{font-size:14px;color:var(--muted2);line-height:1.6;}
+
+/* VIDEO */
+.video-section{background:var(--bg1);}
+.video-wrap{max-width:800px;margin:0 auto;border-radius:16px;overflow:hidden;border:1px solid var(--border);aspect-ratio:16/9;}
+.video-wrap iframe{width:100%;height:100%;border:0;display:block;}
+
+/* PRICING */
+.pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start;}
+@media(max-width:720px){.pricing-grid{grid-template-columns:1fr;}}
+.plan-card{background:var(--bg1);border:1px solid var(--border);border-radius:16px;padding:32px 28px;position:relative;}
+.plan-card.featured{border-color:rgba(34,197,94,0.35);background:linear-gradient(160deg,rgba(34,197,94,0.05) 0%,var(--bg1) 60%);}
+.plan-badge{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--green);color:#080C10;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 14px;border-radius:20px;white-space:nowrap;}
+.plan-name{font-size:12px;color:var(--muted2);font-weight:500;margin-bottom:12px;text-transform:uppercase;letter-spacing:.06em;font-family:'Inter',sans-serif;}
+.plan-price{font-family:'Space Grotesk',sans-serif;font-size:36px;font-weight:700;color:var(--white);margin-bottom:6px;}
+.plan-desc{font-size:13px;color:var(--muted);margin-bottom:24px;line-height:1.5;}
+.plan-divider{border:none;border-top:1px solid var(--border);margin-bottom:22px;}
+.plan-features{list-style:none;margin-bottom:28px;}
+.plan-features li{display:flex;align-items:flex-start;gap:10px;font-size:14px;color:var(--muted2);padding:7px 0;border-bottom:1px solid var(--border);}
+.plan-features li:last-child{border-bottom:none;}
+.plan-features li::before{content:'✓';color:var(--green);font-weight:700;font-size:13px;margin-top:1px;flex-shrink:0;}
+.btn-plan{display:block;width:100%;text-align:center;padding:12px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;transition:all .18s;font-family:'Space Grotesk',sans-serif;}
+.btn-plan-primary{background:var(--green);color:#080C10;}
+.btn-plan-primary:hover{background:#16A34A;box-shadow:0 0 24px var(--green-glow);}
+.btn-plan-outline{background:transparent;color:var(--muted2);border:1px solid var(--border);}
+.btn-plan-outline:hover{border-color:rgba(255,255,255,0.15);color:var(--white);}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:56px 28px 36px;}
+.footer-inner{display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:40px;margin-bottom:40px;max-width:1080px;margin-left:auto;margin-right:auto;}
+.footer-left{display:flex;flex-direction:column;gap:10px;}
+.footer-brand{display:flex;align-items:center;gap:12px;}
+.footer-brand img{height:44px;width:44px;object-fit:contain;}
+.footer-brand-name{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:600;color:var(--white);}
+.footer-tagline{font-size:13px;color:var(--muted);font-weight:300;}
+.footer-links{display:flex;flex-direction:column;gap:10px;}
+.footer-links a{font-size:14px;color:var(--muted2);transition:color .15s;}
+.footer-links a:hover{color:var(--green);}
+.footer-bottom{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;border-top:1px solid var(--border);padding-top:24px;}
+.footer-copy{font-size:12px;color:var(--muted);}
+
+@media(max-width:480px){
+  .hero{padding:72px 20px 64px;}
+  .hero-stats{flex-direction:column;}
+  .hero-stat{border-right:none;border-bottom:1px solid rgba(34,197,94,0.12);}
+  .hero-stat:last-child{border-bottom:none;}
+  .footer-inner{flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand">
+      <img class="brand-logo" src="logo.png" alt="Zentry">
+      <span class="brand-name">ZENTRY</span>
+    </div>
+    <a class="btn btn-primary" href="https://wa.me/5491153440001" target="_blank">Solicitar demo</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <img class="hero-logo" src="logo.png" alt="Zentry">
+  <div class="hero-badge">Software para asociaciones civiles</div>
+  <h1>Control total de tu expendio, sin complicaciones</h1>
+  <p>Stock, socios, caja y reportes en una sola plataforma. Rápido, simple y desde cualquier dispositivo.</p>
+  <div class="hero-cta">
+    <a class="btn btn-primary btn-lg" href="https://wa.me/5491153440001" target="_blank">Solicitar demo</a>
+    <a class="btn btn-ghost btn-lg" href="#sistema">Ver el sistema</a>
+  </div>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">100%</div><div class="label">En la nube</div></div>
+    <div class="hero-stat"><div class="num">1 día</div><div class="label">Para activar</div></div>
+    <div class="hero-stat"><div class="num">24 hs</div><div class="label">Soporte</div></div>
+  </div>
+</section>
+
+<section class="section" id="sistema" style="background:var(--bg1);">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">La plataforma</span>
+      <h2>Diseñada para el día a día</h2>
+      <p>Intuitivo, rápido y sin curva de aprendizaje. Así se ve Zentry por dentro.</p>
+    </div>
+    <div class="screens-grid">
+      <div class="screen-card">
+        <div class="screen-bar"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="urlbar"></div></div>
+        <img class="screen-img" src="stock.png" alt="Control de stock">
+        <div class="screen-caption"><h4>Control de stock</h4><p>Inventario actualizado al instante con cada venta.</p></div>
+      </div>
+      <div class="screen-card">
+        <div class="screen-bar"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="urlbar"></div></div>
+        <img class="screen-img" src="expendio.png" alt="Caja y movimientos">
+        <div class="screen-caption"><h4>Caja y movimientos</h4><p>Cierre automático con detalle por turno y operador.</p></div>
+      </div>
+      <div class="screen-card">
+        <div class="screen-bar"><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="urlbar"></div></div>
+        <img class="screen-img" src="pacientes.png" alt="Socios y Reprocann">
+        <div class="screen-caption"><h4>Socios y Reprocann</h4><p>Base de datos segura con historial de dispensas.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Beneficios</span>
+      <h2>Todo lo que tu asociación necesita</h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-card"><div class="benefit-icon">📦</div><h3>Control de stock</h3><p>Inventario en tiempo real por variedad y gramaje. Sin faltantes ni mermas fuera de control.</p></div>
+      <div class="benefit-card"><div class="benefit-icon">📋</div><h3>Registro de expendio</h3><p>Dispensa rápida y trazable, vinculada directamente a caja y socio.</p></div>
+      <div class="benefit-card"><div class="benefit-icon">👥</div><h3>Gestión de socios</h3><p>Base de datos segura de pacientes y asociados. Siempre actualizada y accesible.</p></div>
+      <div class="benefit-card"><div class="benefit-icon">☁️</div><h3>Todo en la nube</h3><p>Acceso inmediato desde cualquier dispositivo. Sin servidores propios ni instalaciones.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--bg1);">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Cómo funciona</span>
+      <h2>Empezá a operar en minutos</h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card"><div class="step-num">Paso 01</div><h3>Solicitá tu acceso</h3><p>Coordinamos por WhatsApp la activación de tu cuenta. Sin formularios ni demoras.</p></div>
+      <div class="step-card"><div class="step-num">Paso 02</div><h3>Cargá tus datos</h3><p>Socios, stock inicial y perfiles de acceso. Todo en un solo lugar, guiado paso a paso.</p></div>
+      <div class="step-card"><div class="step-num">Paso 03</div><h3>Listo para operar</h3><p>Gestioná ventas, caja y socios desde el celular o la computadora, en tiempo real.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section video-section">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Video</span>
+      <h2>Mirá cómo funciona</h2>
+      <p>La plataforma completa en acción, en menos de dos minutos.</p>
+    </div>
+    <div class="video-wrap">
+      <iframe src="https://drive.google.com/file/d/1C9Z1lsTv-TeLmOflD37mMa1L6a4GTelq/preview" allowfullscreen allow="autoplay"></iframe>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="precios">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-tag">Planes</span>
+      <h2>Precios claros, sin sorpresas</h2>
+      <p>Un abono mensual fijo. Sin costos ocultos ni letra chica.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="plan-card">
+        <div class="plan-name">Básico</div>
+        <div class="plan-price">A consultar</div>
+        <div class="plan-desc">Para asociaciones que recién arrancan o tienen bajo volumen.</div>
+        <hr class="plan-divider">
+        <ul class="plan-features">
+          <li>Hasta 50 socios activos</li>
+          <li>Control de stock</li>
+          <li>Caja diaria</li>
+          <li>Registro de expendio</li>
+          <li>Soporte por WhatsApp</li>
+        </ul>
+        <a href="https://wa.me/5491153440001" target="_blank" class="btn-plan btn-plan-outline">Consultar</a>
+      </div>
+      <div class="plan-card featured">
+        <div class="plan-badge">Más elegido</div>
+        <div class="plan-name">Profesional</div>
+        <div class="plan-price">A consultar</div>
+        <div class="plan-desc">Para asociaciones en crecimiento que necesitan control total.</div>
+        <hr class="plan-divider">
+        <ul class="plan-features">
+          <li>Socios ilimitados</li>
+          <li>Stock completo + alertas</li>
+          <li>Reportes avanzados</li>
+          <li>Historial de dispensas</li>
+          <li>Integración Reprocann</li>
+          <li>Soporte prioritario</li>
+        </ul>
+        <a href="https://wa.me/5491153440001" target="_blank" class="btn-plan btn-plan-primary">Solicitar demo</a>
+      </div>
+      <div class="plan-card">
+        <div class="plan-name">Personalizado</div>
+        <div class="plan-price" style="font-size:26px;">A medida</div>
+        <div class="plan-desc">Para redes de asociaciones o necesidades específicas.</div>
+        <hr class="plan-divider">
+        <ul class="plan-features">
+          <li>Todo del plan Profesional</li>
+          <li>Múltiples sedes</li>
+          <li>Configuración a medida</li>
+          <li>Capacitación incluida</li>
+          <li>SLA garantizado</li>
+        </ul>
+        <a href="https://wa.me/5491153440001" target="_blank" class="btn-plan btn-plan-outline">Consultar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="footer-brand">
+        <img src="logo.png" alt="Zentry">
+        <span class="footer-brand-name">ZENTRY</span>
+      </div>
+      <div class="footer-tagline">Gestión inteligente para asociaciones civiles.</div>
+    </div>
+    <div class="footer-links">
+      <a href="https://wa.me/5491153440001" target="_blank">WhatsApp</a>
+      <a href="mailto:zentry.gestionapp@gmail.com">zentry.gestionapp@gmail.com</a>
+      <a href="https://instagram.com/zentrygestion" target="_blank">Instagram</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Zentry. Todos los derechos reservados.</div>
+    <div class="footer-copy">zentry.gestionapp@gmail.com</div>
+  </div>
+</footer>
+
+</body>
+</html>
