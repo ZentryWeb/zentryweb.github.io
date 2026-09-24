@@ -58,8 +58,8 @@ nav{position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border);back
 .hero-stat:last-child{border-right:none;}
 .hero-stat .num{font-family:'Space Grotesk',sans-serif;font-size:26px;font-weight:700;color:var(--white);margin-bottom:4px;}
 .hero-stat .label{font-size:12px;color:var(--muted);font-weight:400;}
-.hero-image{flex:1;min-width:260px;max-width:440px;display:flex;justify-content:center;align-items:center;}
-.hero-image img{width:100%;max-width:400px;height:auto;filter:drop-shadow(0 32px 64px rgba(34,197,94,0.18));}
+.hero-image{flex:1;min-width:260px;max-width:440px;display:flex;justify-content:center;align-items:center;background:var(--bg);border-radius:24px;}
+.hero-image img{width:100%;max-width:400px;height:auto;filter:drop-shadow(0 32px 64px rgba(34,197,94,0.22));mix-blend-mode:normal;}
 
 /* SECTION */
 .section{padding:88px 28px;}
@@ -102,8 +102,13 @@ nav{position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border);back
 
 /* VIDEO */
 .video-section{background:var(--bg1);}
-.video-wrap{max-width:800px;margin:0 auto;border-radius:16px;overflow:hidden;border:1px solid var(--border);aspect-ratio:16/9;}
-.video-wrap iframe{width:100%;height:100%;border:0;display:block;}
+.video-wrap{max-width:800px;margin:0 auto;border-radius:16px;overflow:hidden;border:1px solid var(--border);position:relative;padding-bottom:56.25%;height:0;}
+.video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;display:block;}
+.video-fallback{display:none;text-align:center;padding:40px 20px;}
+.video-fallback a{color:var(--green);font-size:15px;text-decoration:underline;}
+@media(max-width:600px){
+  .video-wrap{border-radius:10px;}
+}
 
 /* PRICING */
 .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:start;}
@@ -261,8 +266,9 @@ footer{border-top:1px solid var(--border);padding:56px 28px 36px;}
       <p>Para gestionar todo desde tu teléfono. Simple. Rápido. Sin complicaciones.</p>
     </div>
     <div class="video-wrap">
-      <iframe src="https://drive.google.com/file/d/1C9Z1lsTv-TeLmOflD37mMa1L6a4GTelq/preview" allowfullscreen allow="autoplay"></iframe>
+      <iframe src="https://drive.google.com/file/d/1C9Z1lsTv-TeLmOflD37mMa1L6a4GTelq/preview" allowfullscreen allow="autoplay; encrypted-media" loading="lazy"></iframe>
     </div>
+    <p style="text-align:center;margin-top:18px;font-size:13px;color:var(--muted);">¿No carga el video? <a href="https://drive.google.com/file/d/1C9Z1lsTv-TeLmOflD37mMa1L6a4GTelq/view" target="_blank" style="color:var(--green);">Abrilo acá</a></p>
   </div>
 </section>
 
